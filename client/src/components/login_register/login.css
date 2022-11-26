@@ -1,5 +1,5 @@
  .main-container {
-    height: 100vh;
+    height: 85vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -18,6 +18,10 @@
     padding-top: 38px;
     padding-bottom: 38px;
    
+  }
+  textarea {   /* for all text* area elements */
+    resize: none;
+    min-height: 150px;
   }
 
   .form-title {
@@ -39,7 +43,7 @@
     line-height: 16px;
     border: 2px solid #e9f2ff;
     border-radius: 5px;
-    padding-left: 25px;
+    padding: 10px 20px;
   }
   .login-input:focus {
     outline: none;

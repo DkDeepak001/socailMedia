@@ -24,19 +24,10 @@ function Feed() {
   }, [])
 
 
-  const handlerLogout = async(e) => {
-    e.preventDefault();
-
-    //removing token from localstorage and redirecting to login page;
-    localStorage.removeItem('token');
-    navigate("/login");
-  }
-
+ 
   return (
     <div>
       <h1>feed</h1>
-      <Link to="/login">Login</Link>
-      <button onClick={handlerLogout}>Log out</button>
     </div>
   )
 }

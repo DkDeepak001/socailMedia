@@ -89,6 +89,19 @@ exports.isUser = async (data) => {
     if(isUserInDB === null){
         return {error :"Invalid Token"};
     }else{
-        return{ status : "ok", message:"token validated sucessfully"};
+        return{ status : "ok", message:"token validated sucessfully",userName : data};
+    }
+}
+
+exports.userDetails = async (data) =>{
+    try {
+        const findUser = await newUser.findOne({userName:data}).select('userName profileUrl')
+        if(findUser === null){
+            return {error : "user not found"}
+        }else{
+            return {status: 'ok',data:findUser}
+        }
+    } catch (error) {
+        return {error : error.message}
     }
 }

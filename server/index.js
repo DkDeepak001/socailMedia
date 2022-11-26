@@ -1,10 +1,14 @@
 const express = require('express');
 require('dotenv').config();
 const cors = require('cors');
-const jwt = require('jsonwebtoken')
+const jwt = require('jsonwebtoken');
+const fileUpload = require('express-fileupload');
+const { v4: uuidv4 } = require('uuid');
+
 
 //importing DB schema and functions
 const newUser = require("./models/newUser");
+const newPost = require("./models/newPost");
 
 
 
@@ -13,6 +17,9 @@ const app = express();
 
 //cros implementation
 app.use(cors());
+
+//use file upload 
+app.use(fileUpload());
 
 //express to recive json data from front end
 app.use(express.json());
@@ -88,6 +95,50 @@ app.route("/login")
         }
     })
 
+//API Route for fetch user Details
+app.route('/fetchUser/:name')
+    .get(async(req,res) => {
+        if(!req.params.name){
+            res.status(400)
+        }else{
+            const user = await newUser.userDetails(req.params.name);
+            if(user.error){
+                res.status(400).json(user);
+            }else{
+                res.status(200).json(user);
+            }
+        }
+    })
+
+//upload file api 
+app.route("/upload")
+    .post(async(req,res) => {
+        if(req.files === null){
+            return res.status(400).json({message:"no file selected",status:'error'})
+        }
+        const file = req.files.file;
+        const postID = uuidv4() + req.body.id;
+        const fileName = postID + file.name
+        const postData = {
+            postID : postID,
+            postedBy:req.body.id,
+            imageUrl:`uploads/${fileName}`,
+            Desc : req.body.Desc,
+            hashTags:req.body.hashTag
+        }
+        const response = await newPost.Post(postData);
+        if(response.error){
+            res.status(500).json({status:"error"})
+        }else{
+            file.mv(`../client/public/uploads/${fileName}`,(err) => {
+                if(err){
+                    console.log(err);
+                    return res.status(500).json({status:"error"})
+                }
+                 return res.status(200).json({fileName : fileName,filePath : `uploads/${fileName}`})
+            })
+        }
+    })
 
 //started server on port 
 app.listen(process.env.PORT,() => {
