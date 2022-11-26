@@ -78,7 +78,7 @@ const removeTag = (id)=>{
         <ToastContainer position="top-center" autoClose={3000}limit={0} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable={false} pauseOnHover={false} theme="light" />
           <div className='newPost-contaner'>
           <h2 style={{margin:'2% 0%'}}>Create new post</h2>
-          <div className="register-form-container">
+          <div className="register-form-container" style={{background: '#ecf3ff',border:'.5px solid rgba(0, 0, 0, 0.468)',borderRadius:'10px'}}>
           <form>
           <div className="form-fields">
             <div className="form-field">

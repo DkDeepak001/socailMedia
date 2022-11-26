@@ -109,7 +109,7 @@ app.route('/fetchUser/:name')
             }
         }
     })
-
+    
 //upload file api 
 app.route("/upload")
     .post(async(req,res) => {
@@ -135,8 +135,19 @@ app.route("/upload")
                     console.log(err);
                     return res.status(500).json({status:"error"})
                 }
-                 return res.status(200).json({fileName : fileName,filePath : `uploads/${fileName}`})
+                return res.status(200).json({fileName : fileName,filePath : `uploads/${fileName}`})
             })
+        }
+    })
+
+//API Endpoint for fetching feeds
+app.route('/feed')
+.get(async(req,res) => {
+        const response = await newPost.fetchAllFeed()
+        if(response.error){
+            res.status(400).json(response);
+        }else{
+            res.status(200).json(response);
         }
     })
 

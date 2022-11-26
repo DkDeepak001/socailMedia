@@ -1,4 +1,6 @@
 const {newPost} = require('./postSchema');
+const {newHashTag} = require('./hastagSchema');
+const { restart } = require('nodemon');
 
 exports.Post = async(data) => {
     try {
@@ -11,8 +13,34 @@ exports.Post = async(data) => {
         hashtag:hashtagArray,
         Desc:Desc,
      })
-     await post.save();
+     const posted = await post.save();
+     console.log(posted);
+
+     hashtagArray.map(async (e) => {
+        const isHashTag = await newHashTag.exists({hashTag:e});
+        if(!isHashTag){
+            const hashtag = await newHashTag.create({
+                posts:posted._id,
+                hashTag:e,
+            })
+            await hashtag.save()
+        }else{
+            const id = isHashTag._id;
+            const hashTag = await newHashTag.findOneAndUpdate({hashTag:e},{$push:{posts:posted._id}, $inc : {count : 1}})
+        }
+
+    })
+
      return {status:'ok',message:"posted"}
+    } catch (error) {
+        return {error:error}
+    }
+}
+
+exports.fetchAllFeed = async (data) => {
+    try {
+        const fetchData = await newPost.find({}).populate('postedBy','userName profileUrl').sort({postTime:-1});
+        return {status:'ok',data:fetchData};
     } catch (error) {
         return {error:error}
     }

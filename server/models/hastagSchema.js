@@ -12,11 +12,14 @@ mongoose.connect(`mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASS
 
 
 const hashTagSchema = new mongoose.Schema({
-    posts:[mongoose.SchemaTypes.ObjectId],
+    posts:{
+        type :[mongoose.SchemaTypes.ObjectId],
+        ref:"Post"
+    },
     hashTag:String,
     count:{
         type:Number,
-        default:0
+        default:1
     }
 })
 
@@ -24,4 +27,4 @@ const hashTagSchema = new mongoose.Schema({
 const newHashTag = new mongoose.model("hashTag",hashTagSchema);
 
 //exporting module
-module.exports = {newHashTag}
+module.exports = { newHashTag }
