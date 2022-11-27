@@ -10,7 +10,6 @@ import './newPost.css'
 
 function NewPost  () {
   const [file,setFile] = useState('');
-  const [fileName,setFileName] = useState("choose image");
 
   const [Desc,setDesc] = useState("");
 
@@ -33,21 +32,30 @@ function NewPost  () {
     formData.append('id',localStorage.getItem('id'));
     formData.append('Desc',Desc);
     formData.append('hashTag',hashtagArray);
-
-    try {
-      const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/upload`,formData,{
-        header:{
-          'Accept': 'application/json',
+    console.log(file);
+ 
+        try {
+          const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/upload`,formData,{
+            header:{
+              'Accept': 'application/json',
           'Content-Type': 'application/form-data'
         }
       })
+     const newName = (response.data.fileName);
+     formData.append('fileName',newName);
+     await axios.post(`https://socail-media-demo.dkdeepak.com/uploadImage.php`,formData,{
+            header:{
+                'Accept': 'application/json',
+                'Content-Type': 'application/form-data'
+              }
+            })
       if(response.status === 200){
         toast.update(toastLoading, {render: "Sucess",type: "success",isLoading: false,position: "top-center",autoClose: 3000,hideProgressBar: false,closeOnClick: true,progress: undefined,theme: "light"});
         navigate("/");
       }
     } catch (error) {
       toast.update(toastLoading,{render:`${error.response.data.message}`,type: "error",isLoading: false,position: "top-center",autoClose: 3000,hideProgressBar: false,closeOnClick: true,progress: undefined,theme: "light"});
-
+      
     }
 
   }

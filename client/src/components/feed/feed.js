@@ -26,7 +26,7 @@ function Feed() {
     //validate token
     async function validateTokenApiCall() {
       try {
-        const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/validateToken`,{ headers: {"Authorization" : `Bearer ${token}`} });
+         await axios.get(`${process.env.REACT_APP_SERVER_URL}/validateToken`,{ headers: {"Authorization" : `Bearer ${token}`} });
         
       } catch (error) {
         //invalid token so redirect to login page

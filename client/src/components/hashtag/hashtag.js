@@ -25,7 +25,6 @@ const Hashtag = () => {
       }
     }
     fetchTag();
-   
   },[])
   return (
     <div className='home-container'>
@@ -52,18 +51,7 @@ const Hashtag = () => {
                 </div>        
               )}
               </main>
-            {/* <main className="grid">
-                <div className='gridBox'>
-                <div className="text">
-                  <div className="post-header">
-                    <img src={'https://xsgames.co/randomusers/assets/avatars/pixel/6.jpg'}/>
-                    <h4 className="profile-header-name">{'DkDeepak'}</h4>
-                  </div>
-                </div>
-                <img className='postImage' src={`https://socail-media-demo.dkdeepak.com/uploads/135a2a20-0080-4f4e-9d60-efb1b59f1780638183fd09be31df984bd8ee316160287_861646471518923_3158420831933405571_n.jpg`}/>
-                </div>        
-              </main> */}
-              
+           
             </div>
         </div>
     </div>

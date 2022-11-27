@@ -132,13 +132,13 @@ app.route("/upload")
         if(response.error){
             res.status(500).json({status:"error"})
         }else{
-            file.mv(`https://socail-media-demo.dkdeepak.com/uploads/${fileName}`,(err) => {
-                if(err){
-                    console.log(err);
-                    return res.status(500).json({status:"error"})
-                }
-                return res.status(200).json({fileName : fileName,filePath : `uploads/${fileName}`})
-            })
+            return res.status(200).json({fileName : fileName,filePath : `uploads/${fileName}`})
+            // file.mv(`./uploads/${fileName}`,(err) => {
+            //     if(err){
+            //         console.log(err);
+            //         return res.status(500).json({status:"error"})
+            //     }
+            // })
         }
     })
 
