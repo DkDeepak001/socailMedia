@@ -1,11 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Glory:wght@500;700&display=swap");
-* {
-
-  font-family: Glory, sans-serif;
-}
 
 .trendingContainer {
-  background-color: #f2f3f7;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -92,3 +86,61 @@
   border-radius: 20px;
 }
 
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (max-width: 1100px) {
+
+  .frame {
+    width: 70%;
+  }
+}
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (max-width: 992px) {
+
+  .frame {
+    width: 80%;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (max-width: 768px) {
+ 
+  .frame {
+    width: 90%;
+  } 
+  .score-card .leader {
+    width: 90%;
+    padding: 0% 3%;
+}
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (max-width: 600px) {
+ 
+  .frame {
+    width: 90%;
+  } 
+  .score-card .leader {
+    width: 100%;
+    padding: 0% 2%;
+  }
+  .frame header {
+    font-size: 1.5rem;
+  }
+}
+
+  /* Extra small devices (phones, 600px and down) */
+  @media only screen and (max-width: 400px) {
+   
+    .frame {
+      min-width: 90%;
+    } 
+    .score-card .leader {
+      width: 100%;
+      padding: 0%;
+    }
+    .frame header {
+      font-size: 1.5rem;
+    }
+  }
+  

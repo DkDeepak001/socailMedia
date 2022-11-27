@@ -72,7 +72,7 @@ const Header = () => {
                     </div>
                     <div className='profile-name'><h3>{user.userName}</h3></div>
                 </div>
-                <button className='logout' onClick={handlerLogout}>Log out</button>
+                <button className='button-59' onClick={handlerLogout}>Log out</button>
             </div>
         </div>
     </div>

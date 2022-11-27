@@ -1,5 +1,5 @@
 .header-container{
-    height: 80px;
+    height: 60px;
     width: 100%;
     display: flex;
     align-items: center;
@@ -14,7 +14,6 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding-top: 1vh;
 }
 .logo-container{
     width: 20%;
@@ -23,16 +22,16 @@
     align-items: center;
 }
 .logo-container img{
-    height: 70px;
+    height: 50px;
 }
 .header-navLinks{
-    width: 20%;
+    width: 15%;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
 }
 .header-navLinks img{
-    height: 30px;
+    height: 25px;
     cursor: pointer;
 }
 
@@ -54,8 +53,165 @@
 }
 
 .profileImage{
-    height:40px;
-    width:40px;
+    height:35px;
+    width:35px;
     border-radius: 50px;
 }
 
+/* CSS */
+.button-59 {
+  align-items: center;
+  background-color: #fff;
+  border: 2px solid #000;
+  box-sizing: border-box;
+  color: #000;
+  cursor: pointer;
+  display: inline-flex;
+  fill: #000;
+  font-family: Inter,sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  justify-content: center;
+  letter-spacing: -.8px;
+  line-height: 24px;
+  outline: 0;
+  text-align: center;
+  text-decoration: none;
+  transition: all .3s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  min-width: 40%;
+}
+
+.button-59:focus {
+  color: #171e29;
+}
+
+.button-59:hover {
+  color: rgb(255, 255, 255);
+  fill: rgb(0, 0, 0);
+  background-color: #000;
+}
+
+.button-59:active {
+    color: rgb(255, 255, 255);
+    fill: rgb(0, 0, 0);
+    background-color: #000;
+}
+
+
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (max-width: 1286px) {
+   
+    .userProfile {
+        width: 28%;
+    }
+    .logo-container {
+        width: 28%;
+    }
+    .header-navLinks {
+        width: 25%;
+    }
+  }
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (max-width: 992px) {
+ 
+    .header-wrapper {
+        width: 90%;
+    }
+    .userProfile {
+        width: 35%;
+    }
+    .logo-container {
+        width: 35%;
+    }
+    .header-navLinks {
+        width: 20%;
+    }
+  }
+  
+  /* Medium devices (landscape tablets, 768px and up) */
+  @media only screen and (max-width: 768px) {
+    
+    .header-wrapper {
+        width: 95%;
+    }
+    .userProfile {
+        width: 35%;
+    }
+    .logo-container {
+        width: 25%;
+    }
+    .header-navLinks {
+        width: 20%;
+    } 
+  }
+  
+  /* Small devices (portrait tablets and large phones, 600px and up) */
+  @media only screen and (max-width: 600px) {
+
+    .header-wrapper {
+        width: 98%;
+    }
+    .userProfile {
+        width: 38%;
+    }
+    .logo-container {
+        width: 25%;
+    }
+    .header-navLinks {
+        width: 30%;
+    } 
+    .button-59{
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 20px;
+        min-width: 25%; 
+    }
+    .profile-name h3{
+        font-size: 16px;
+    }
+    .profileImage {
+        height: 25px;
+        width: 25px;
+        border-radius: 50px;
+    }
+    .header-navLinks img {
+        height: 25px;
+        cursor: pointer;
+    }
+    .logo-container img {
+        height: 40px;
+    }
+    .logo-container h2 {
+        font-size: 16px;
+    }
+  }
+  
+    /* Extra small devices (phones, 600px and down) */
+    @media only screen and (max-width: 400px) {
+    
+        .header-wrapper {
+            width: 98%;
+        }
+        .userProfile {
+            width: 25%;
+        }
+        .logo-container {
+            width: 25%;
+        }
+        .header-navLinks {
+            width: 35%;
+        } 
+        .profileImage {
+            height: 30px;
+            width: 30px;
+            border-radius: 50px;
+        }
+        .profile-name h3{
+            font-size: 0;
+        }
+    }
+    

@@ -77,15 +77,15 @@ const removeTag = (id)=>{
       <div className='home-main'>
         <ToastContainer position="top-center" autoClose={3000}limit={0} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable={false} pauseOnHover={false} theme="light" />
           <div className='newPost-contaner'>
-          <h2 style={{margin:'2% 0%'}}>Create new post</h2>
-          <div className="register-form-container" style={{background: '#ecf3ff',border:'.5px solid rgba(0, 0, 0, 0.468)',borderRadius:'10px'}}>
-          <form>
+          <div className="frame">
+          <header style={{paddingBottom:'30px'}}>Create new post</header>
+          <form style={{width:'80%'}}>
           <div className="form-fields">
             <div className="form-field">
-            <textarea className='login-input' rows="10"type="text" placeholder="Description" name="Description" required pattern="[a-zA-Z]+" title="Name can only contain letters." onChange= {(e) => setDesc(e.target.value)}value={Desc}/>
+            <textarea className='login-input' rows="10"type="text" placeholder="Description" name="Description" required pattern="[a-zA-Z]+" title="Name can only contain letters." onChange= {(e) => setDesc(e.target.value)}value={Desc} style={{border: '0.5px solid #b1b1b1' , fontSize:'18px',color:'#191919'}}/>
             </div>
             <div className="wrapper">
-                <input className='login-input' placeholder='Type your hashtag & click enter.' type="text" onChange={updateHashtagInput} value={hashTagInput} onKeyDown={addHashTagToArray} autoComplete="off" disabled={hashtagArray.length >= 3}/>
+                <input className='login-input' placeholder='Type your hashtag & click enter.' type="text" onChange={updateHashtagInput} value={hashTagInput} onKeyDown={addHashTagToArray} autoComplete="off" disabled={hashtagArray.length >= 3} style={{border: '0.5px solid #b1b1b1' , fontSize:'18px',color:'#191919'}}/>
                 <div className="tag-container">
                   {hashtagArray.map((res,index) => { return <p key={index} onClick={() => removeTag(index)}  className='tag'>{res}</p>})}
               </div>
