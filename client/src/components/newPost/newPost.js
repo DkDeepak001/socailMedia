@@ -24,7 +24,7 @@ function NewPost  () {
   
   
   const uploadPost =  async (e) => {
-    console.log("rere")
+
     e.preventDefault();
     //alert box 
     const toastLoading = toast.loading("Posting");

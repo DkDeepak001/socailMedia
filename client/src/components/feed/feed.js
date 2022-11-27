@@ -45,7 +45,6 @@ function Feed() {
         const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/feed`)
       if(response.status === 200){
         setFeed(response.data.data);
-        console.log(response.data.data)
       }
     } catch (error) {
       console.log(error.response.data.message)
@@ -60,7 +59,6 @@ function Feed() {
     try {
       const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/fetchSavedPost/${userId}`)
     if(response.status === 200){
-      console.log(response.data.data.savedPost)
       setSavedFeed(response.data.data.savedPost)
     }
   } catch (error) {
@@ -108,8 +106,7 @@ function Feed() {
   }
 
   const downloadHandler = async (url) => {
-    console.log("download",url.split('/')[1]);
-     saveAs(`http://localhost:3000/${url}`, url.split('/')[1]) // Put your image url here.
+     saveAs(`https://socail-media-demo.dkdeepak.com/${url}`, url.split('/')[1]) // Put your image url here.
   }
 
 function RenderFeed () {
@@ -120,7 +117,7 @@ function RenderFeed () {
       <h4 className="profile-header-name">{e.postedBy.userName}</h4>
     </div>
     <div className="post-body">
-      <img className='post-body-img' src={`http://localhost:3000/${e.imageUrl}`}/>
+      <img className='post-body-img' src={`https://socail-media-demo.dkdeepak.com/${e.imageUrl}`}/>
       <div className="post-body-interactive">
         <div className="like"><img onClick={() => likePost(e._id)} src={e.likes !== 0 && e.likedBy.includes(localStorage.getItem('id'))?liked:like} /><h4>{e.likes} Likes</h4></div>
         <div className="save">
@@ -150,7 +147,7 @@ function RenderSaved(){
       <h4 className="profile-header-name">{e.postedBy.userName}</h4>
     </div>
     <div className="post-body">
-      <img className='post-body-img' src={`http://localhost:3000/${e.imageUrl}`}/>
+      <img className='post-body-img' src={`https://socail-media-demo.dkdeepak.com/${e.imageUrl}`}/>
       <div className="post-body-interactive">
         <div className="like"><img onClick={() => likePost(e._id)} src={e.likes !== 0 && e.likedBy.includes(localStorage.getItem('id'))?liked:like} /><h4>{e.likes} Likes</h4></div>
         <div className="save">

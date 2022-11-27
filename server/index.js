@@ -54,7 +54,6 @@ app.route("/validateToken")
         if(req.user){
             //valdiating user in database
             const response = await newUser.isUser(req.user);
-            console.log(response)
             if(response.error){
                 res.status(401).json({status:"error",message:"Invalid token"})
             }else{
@@ -133,7 +132,7 @@ app.route("/upload")
         if(response.error){
             res.status(500).json({status:"error"})
         }else{
-            file.mv(`../client/public/uploads/${fileName}`,(err) => {
+            file.mv(`https://socail-media-demo.dkdeepak.com/uploads/${fileName}`,(err) => {
                 if(err){
                     console.log(err);
                     return res.status(500).json({status:"error"})
@@ -205,7 +204,6 @@ app.route("/like")
 app.route("/save")
     .post(async(req,res) => {
         const response = await save.savePost(req.body.data);
-        console.log(response)
         if(response.error){
             res.status(400).json({error:"error",message:"unknow error"})
         }else{
@@ -214,6 +212,6 @@ app.route("/save")
     })
 
 //started server on port 
-app.listen(process.env.PORT,() => {
+app.listen(process.env.PORT || 4000,() => {
     console.log(`server started at ${process.env.PORT}`)
 })

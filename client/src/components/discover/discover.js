@@ -14,7 +14,6 @@ const Discover = () => {
       try {
         const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/trending`)
         if(response.status === 200){
-          console.log(response.data)
           setData(response.data.data)
         }else{
           throw new Error("unknow");

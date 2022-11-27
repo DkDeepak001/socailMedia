@@ -17,7 +17,6 @@ const Hashtag = () => {
         const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/fetchHashTag/${tag}`);
         
         if(response.status === 200){
-          console.log(response.data.data)
           setFeed(response.data.data.posts)
           setPostCount(response.data.data.count);
         }
@@ -28,7 +27,6 @@ const Hashtag = () => {
     fetchTag();
    
   },[])
-  console.log(feed)
   return (
     <div className='home-container'>
         <Header />
@@ -50,7 +48,7 @@ const Hashtag = () => {
                   <img src={liked} /> <h3> {e.likes} likes</h3>
                   </div>
                 </div>
-                  <img className='postImage' src={`http://localhost:3000/${e.imageUrl}`}/>
+                  <img className='postImage' src={`https://socail-media-demo.dkdeepak.com/${e.imageUrl}`}/>
                 </div>        
               )}
               </main>
@@ -62,7 +60,7 @@ const Hashtag = () => {
                     <h4 className="profile-header-name">{'DkDeepak'}</h4>
                   </div>
                 </div>
-                <img className='postImage' src={`http://localhost:3000/uploads/135a2a20-0080-4f4e-9d60-efb1b59f1780638183fd09be31df984bd8ee316160287_861646471518923_3158420831933405571_n.jpg`}/>
+                <img className='postImage' src={`https://socail-media-demo.dkdeepak.com/uploads/135a2a20-0080-4f4e-9d60-efb1b59f1780638183fd09be31df984bd8ee316160287_861646471518923_3158420831933405571_n.jpg`}/>
                 </div>        
               </main> */}
               
