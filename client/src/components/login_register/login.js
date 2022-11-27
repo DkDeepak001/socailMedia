@@ -38,9 +38,10 @@ function Login() {
     toast.update(toastLoading, {render: "Sucess",type: "success",isLoading: false,position: "top-center",autoClose: 3000,hideProgressBar: false,closeOnClick: true,progress: undefined,theme: "light"});
 
     if(response.status === 200){
-
+      console.log(response.data);
       //setting token in localstorage
       localStorage.setItem('token',response.data.token);
+      localStorage.setItem('id',response.data.userId);
       
       //redirect to homepage
       navigate("/")

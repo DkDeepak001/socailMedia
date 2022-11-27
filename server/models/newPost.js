@@ -46,3 +46,14 @@ exports.fetchAllFeed = async (data) => {
         return {error:error}
     }
 }
+
+exports.fetchSavedPost = async (data) => {
+    try {
+        // populate({path:'posts' ,select:'imageUrl likes',populate:{path:'postedBy',select: 'userName profileUrl'}})
+        const fetchSaved = await newUser.findById(data,'userName profilePic').populate({path:'savedPost',populate:{path:'postedBy',select:'userName profileUrl'}})
+        console.log(fetchSaved)
+        return{status:'ok',data:fetchSaved}
+    } catch (error) {
+        return{error:error}
+    }
+}

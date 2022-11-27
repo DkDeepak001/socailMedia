@@ -3,6 +3,8 @@ import './hashtag.css';
 import Header from '../header/header';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import liked from '../resource/liked.png'
+
 
 const Hashtag = () => {
   let { tag } = useParams();
@@ -39,13 +41,16 @@ const Hashtag = () => {
               <main className="grid">
             {feed.length !== 0 && feed.map((e,index) => 
                 <div className='gridBox' key={index}>
-                <div className="text">
-                  <div className="post-header">
+                <div className="gridBox-header">
+                  <div className="post-header-hashtag">
                     <img src={e.postedBy.profileUrl}/>
-                    <h4 className="profile-header-name">{e.postedBy.userName}</h4>
+                    <h3 className="profile-header-name">{e.postedBy.userName}</h3>
+                  </div>
+                  <div className='likeContainer'> 
+                  <img src={liked} /> <h3> {e.likes} likes</h3>
                   </div>
                 </div>
-                <img className='postImage' src={`http://localhost:3000/${e.imageUrl}`}/>
+                  <img className='postImage' src={`http://localhost:3000/${e.imageUrl}`}/>
                 </div>        
               )}
               </main>

@@ -3,7 +3,7 @@ const {newHashTag} = require('./hastagSchema');
 
 exports.fetchHashtagFeed = async (data) => {
    try {
-    const fetchData = await newHashTag.findOne({hashTag:data}).populate({path:'posts' ,select:'imageUrl',populate:{path:'postedBy',select: 'userName profileUrl'}});
+    const fetchData = await newHashTag.findOne({hashTag:data}).populate({path:'posts' ,select:'imageUrl likes',populate:{path:'postedBy',select: 'userName profileUrl'}});
     return {status:'ok',data:fetchData};
     
    } catch (error) {

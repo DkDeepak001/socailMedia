@@ -10,6 +10,8 @@ const { v4: uuidv4 } = require('uuid');
 const newUser = require("./models/newUser");
 const newPost = require("./models/newPost");
 const  fetchHashtagFeed  = require('./models/fetchHashtag');
+const like = require('./models/likePost');
+const save = require('./models/savePost');
 
 
 
@@ -89,7 +91,7 @@ app.route("/login")
             if(response.error){
                 res.status(400).json({status : "error",message:response.error});
             }else{
-                res.status(200).json({status : "ok" ,message:"User Authenticated Sucessfully", token : response.token});
+                res.status(200).json({status : "ok" ,message:"User Authenticated Sucessfully", token : response.token,userId : response.userId});
             }
         }else{
             throw new Error("No Data found")
@@ -151,6 +153,16 @@ app.route('/feed')
             res.status(200).json(response);
         }
     })
+//API Endpoint for saved feeds
+app.route('/fetchSavedPost/:userId')
+.get(async(req,res) => {
+        const response = await newPost.fetchSavedPost(req.params.userId)
+        if(response.error){
+            res.status(400).json(response);
+        }else{
+            res.status(200).json(response);
+        }
+    })
 
 
 //API Endpoint for Hashtag feed fetchinng
@@ -170,6 +182,30 @@ app.route("/fetchHashTag/:tag")
 app.route("/trending")
     .get(async(req,res) => {
         const response = await fetchHashtagFeed.fetchTrending();
+        if(response.error){
+            res.status(400).json({error:"error",message:"unknow error"})
+        }else{
+            res.status(200).json(response);
+        }
+    })
+
+//ApI Endpoint for like post
+app.route("/like")
+    .post(async(req,res) => {
+        const response = await like.likePost(req.body.data);
+        // console.log(response)
+        if(response.error){
+            res.status(400).json({error:"error",message:"unknow error"})
+        }else{
+            res.status(200).json(response);
+        }
+    })
+
+//ApI Endpoint for saved post
+app.route("/save")
+    .post(async(req,res) => {
+        const response = await save.savePost(req.body.data);
+        console.log(response)
         if(response.error){
             res.status(400).json({error:"error",message:"unknow error"})
         }else{

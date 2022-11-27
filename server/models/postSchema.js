@@ -15,7 +15,6 @@ const PostSchema = new mongoose.Schema({
     postID : { 
         type:String,
         require:true,
-        unique: true,
     },
     postedBy:{
         type: mongoose.SchemaTypes.ObjectId,
@@ -29,7 +28,6 @@ const PostSchema = new mongoose.Schema({
     imageUrl:{ 
         type:String,
         require:true,
-        unique: true,
     },
     Desc:{
         type:String,
@@ -38,12 +36,15 @@ const PostSchema = new mongoose.Schema({
     likedBy:{
         type:[mongoose.SchemaTypes.ObjectId],
         ref:"User",
-        unique:true
     },
     likes:{
         type:Number,
         default:0
-    }
+    },
+    savedBy:{
+        type:[mongoose.SchemaTypes.ObjectId],
+        ref:"User",
+    },
 })
 
 //creating new document for storing data

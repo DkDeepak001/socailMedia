@@ -80,3 +80,43 @@
     color: black;
 }
 
+.button-group {
+    background-color: #ffffff;
+    margin: 1rem 0;
+    display: flex;
+    padding: 5px;
+    border-radius: 12px;
+    min-height: 40px;
+    overflow: hidden;
+    position: relative;
+  }
+  .button-group[data-left="4px"]:before {
+    left: 4px;
+  }
+  .button-group[data-left="50%"]:before {
+    left: 50%;
+  }
+  .button-group:before {
+    transition: all 0.3s ease;
+    content: '';
+    position: absolute;
+    top: 4px;
+    width: calc(50% - 4px);
+    height: calc(100% - 8px);
+    background-color: rgb(111, 111, 111);
+    z-index: 1;
+    border-radius: 12px;
+  }
+  .button-group button {
+    flex: 1;
+    min-width: 120px;
+    padding: 5px 3px;
+    border: none;
+    font-family: Glory, sans-serif;
+    position: relative;
+    background-color: transparent;
+    z-index: 1;
+  }
+  .button-group button:hover {
+    cursor: pointer;
+  }

@@ -26,12 +26,14 @@ const Header = () => {
                     localStorage.setItem('id',fetchUser.data.data._id)
                     setUser({userName :userName ,profilePic :profileUrl});
                 }else{
+                    localStorage.removeItem('id');
                     localStorage.removeItem('token');
                     navigate("/login");
                 }
             }
         } catch (error) {
             //invalid token so redirect to login page
+            localStorage.removeItem('id');
             localStorage.removeItem('token');
             navigate("/login");
         }
@@ -44,6 +46,7 @@ const Header = () => {
         e.preventDefault();
     
         //removing token from localstorage and redirecting to login page;
+        localStorage.removeItem('id');
         localStorage.removeItem('token');
         navigate("/login");
       }
