@@ -9,6 +9,7 @@ const { v4: uuidv4 } = require('uuid');
 //importing DB schema and functions
 const newUser = require("./models/newUser");
 const newPost = require("./models/newPost");
+const  fetchHashtagFeed  = require('./models/fetchHashtag');
 
 
 
@@ -146,6 +147,31 @@ app.route('/feed')
         const response = await newPost.fetchAllFeed()
         if(response.error){
             res.status(400).json(response);
+        }else{
+            res.status(200).json(response);
+        }
+    })
+
+
+//API Endpoint for Hashtag feed fetchinng
+app.route("/fetchHashTag/:tag")
+    .get(async(req,res) => {
+        if(!req.params.tag) return res.status(400).json({error:"error",message:"invalid Tag"})
+        const response = await fetchHashtagFeed.fetchHashtagFeed(req.params.tag);
+        if(response.error){
+            res.status(400).json({error:"error",message:"invalid Tag"})
+        }else{
+            res.status(200).json(response);
+        }
+    })
+
+
+//API endpoint for trending
+app.route("/trending")
+    .get(async(req,res) => {
+        const response = await fetchHashtagFeed.fetchTrending();
+        if(response.error){
+            res.status(400).json({error:"error",message:"unknow error"})
         }else{
             res.status(200).json(response);
         }

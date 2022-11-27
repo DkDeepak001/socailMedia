@@ -34,7 +34,16 @@ const PostSchema = new mongoose.Schema({
     Desc:{
         type:String,
     },
-    hashtag:[String]
+    hashtag:[String],
+    likedBy:{
+        type:[mongoose.SchemaTypes.ObjectId],
+        ref:"User",
+        unique:true
+    },
+    likes:{
+        type:Number,
+        default:0
+    }
 })
 
 //creating new document for storing data

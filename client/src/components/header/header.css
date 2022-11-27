@@ -4,7 +4,7 @@
     display: flex;
     align-items: center;
     box-shadow: 1px 1px 20px rgba(168, 167, 166, 0.653) ;
-    /* background-color: rgb(233, 222, 200); */
+    background-color: rgb(255, 255, 255);
 }
 
 .header-wrapper{

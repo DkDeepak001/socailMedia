@@ -1,6 +1,6 @@
 const {newPost} = require('./postSchema');
 const {newHashTag} = require('./hastagSchema');
-const { restart } = require('nodemon');
+const {newUser} = require('./userSchema')
 
 exports.Post = async(data) => {
     try {
@@ -14,8 +14,9 @@ exports.Post = async(data) => {
         Desc:Desc,
      })
      const posted = await post.save();
-     console.log(posted);
 
+     const updatePostInUser = await newUser.findByIdAndUpdate(postedBy,{$push:{posts:posted._id}})
+     
      hashtagArray.map(async (e) => {
         const isHashTag = await newHashTag.exists({hashTag:e});
         if(!isHashTag){

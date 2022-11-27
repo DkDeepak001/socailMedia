@@ -33,6 +33,7 @@ function Feed() {
       try {
         const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/feed`)
       if(response.status === 200){
+        console.log(response.data.data)
        setFeed(response.data.data);
       }
     } catch (error) {
@@ -40,11 +41,28 @@ function Feed() {
     }
   }
   fetchFeed()
-  console.log(feed)
+  
   },[])
 
-  const populate =async() =>{
-    const response = axios.get(`${process.env.REACT_APP_SERVER_URL}/populate`)
+  
+
+  //like post
+  const likePost = async (id) => {
+    try {
+      const response  = await axios.post(`${process.env.REACT_APP_SERVER_URL}/like}`,{
+        header:{
+          'Accept': 'application/json',
+          'Content-Type': 'application/json;charset=UTF-8'
+        },
+        data:{userIdL:localStorage.getItem('id'),postId:id}
+      })
+      if(response.status === 200){
+        console.log("liked"); 
+        console.log(response); 
+      }
+    } catch (error) {
+      console.log(error)
+    }
   }
 
  
@@ -58,7 +76,7 @@ function Feed() {
         <div className="post-body">
           <img className='post-body-img' src={`http://localhost:3000/${e.imageUrl}`}/>
           <div className="post-body-interactive">
-            <div className="like"><img src={like} /><h4>Likes</h4></div>
+            <div className="like"><img onClick={() => likePost(e._id)} src={like} /><h4>Likes</h4></div>
             <div className="save"><img src={save} style={{paddingRight:'5px'}}/> <img src={download}/></div>
           </div>
           <p className="post-body-desc"> {e.Desc}</p>
@@ -67,7 +85,7 @@ function Feed() {
           
           <div>
             <div className="post-footer-hashtags">
-              {e.hashtag.map(x => <p>#{x}</p>)}
+              {e.hashtag.map((x,index) => <p key={index}><Link to={`/hashtag/${x}`}>#{x}</Link></p>)}
             </div>
           </div>
         </div>

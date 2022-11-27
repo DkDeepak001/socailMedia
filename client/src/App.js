@@ -5,6 +5,7 @@ import Register from "./components/login_register/register";
 import Home from "./components/home/home";
 import Discover from './components/discover/discover';
 import NewPost from './components/newPost/newPost';
+import Hashtag from "./components/hashtag/hashtag";
 
 function App() {
  
@@ -18,6 +19,7 @@ function App() {
         <Route path="/discover" element={<Discover />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/register" element={<Register />}></Route>
+        <Route path="/hashtag/:tag" element={<Hashtag />}></Route>
       </Routes>
     </div>
   );

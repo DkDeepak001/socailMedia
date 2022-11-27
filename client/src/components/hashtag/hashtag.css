@@ -1,0 +1,51 @@
+.home-main-feed{
+    width: 80%;
+    margin: 0% auto;
+}
+.hashTagHeader{
+
+    display: flex;
+    flex-direction: row;
+    width: 30%;
+    margin-top:2%;
+    align-items: center;
+}
+.hashTagHeader p {
+    font-size: 17px;
+    padding-left: 5%;
+}
+.container {
+    padding: 3% 0%;
+    
+}
+  
+  .grid {
+    
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
+    gap: 20px;
+    align-items: stretch;
+}
+.gridBox{
+
+background-color: #fff;
+    height: 50vh;
+    margin-bottom: 20%;
+  }
+  
+  .grid > div {
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
+  }
+  
+  .postImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+  }
+  
+  .grid .text {
+    padding: 2%;
+  }
+  

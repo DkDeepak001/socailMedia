@@ -36,6 +36,15 @@ const UserSchema = new mongoose.Schema({
         default:()=> Date.now(),
         immutable:true
     },
+    posts:{
+        type :[mongoose.SchemaTypes.ObjectId],
+        ref:"Post"
+    },
+    likedPost:{
+        type :[mongoose.SchemaTypes.ObjectId],
+        ref:"Post",
+        unique:true
+    }
 })
 
 //creating new document for storing data

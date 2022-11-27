@@ -1,9 +1,11 @@
 .feed-container{
     width: 35%;
     margin: 2%  auto;
+    background-color: #f2f3f7;
+
 }
 .post-container{
-    background: #ecf3ff;
+    background-color: #fff;
     margin: 20px  auto;
     border: .5px solid rgba(0, 0, 0, 0.468);
     display: flex;
@@ -72,5 +74,9 @@
 .post-footer-hashtags p {
     padding-right: 3%;
     cursor: pointer;
+}
+.post-footer-hashtags a {
+    text-decoration: none;
+    color: black;
 }
 
