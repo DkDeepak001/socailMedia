@@ -16,7 +16,6 @@ const UserSchema = new mongoose.Schema({
     userName:{
         type:String,
         required:true,
-        unique: true,
     },
     password:{
         type:String,
@@ -25,7 +24,6 @@ const UserSchema = new mongoose.Schema({
     email:{
         type:String,
         required:true,
-        unique: true,
     },
     profileUrl:{
         type:String,
@@ -36,6 +34,18 @@ const UserSchema = new mongoose.Schema({
         default:()=> Date.now(),
         immutable:true
     },
+    posts:{
+        type :[mongoose.SchemaTypes.ObjectId],
+        ref:"Post"
+    },
+    likedPost:{
+        type :[mongoose.SchemaTypes.ObjectId],
+        ref:"Post",
+    },
+    savedPost:{
+        type :[mongoose.SchemaTypes.ObjectId],
+        ref:"Post",
+    }
 })
 
 //creating new document for storing data

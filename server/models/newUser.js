@@ -50,7 +50,7 @@ exports.Login = async(data) =>{
 
         //checing if user name exit in database
         const isUser = await newUser.exists({userName: userName});
-        
+        const getUserId = await newUser.findOne({userName: userName});
         if(isUser){
             //geting hashed password for db
             const getPassword = await newUser.findOne({userName:userName}).select('password');
@@ -65,7 +65,7 @@ exports.Login = async(data) =>{
 
                 //after generating jwt token returing back
                 if(token){
-                    return {sucess :"user Authenticated" ,token : token};
+                    return {sucess :"user Authenticated" ,token : token,userId :getUserId.id};
                 }else{
                     return {error : "Something went wrong"}
                 }
@@ -89,6 +89,19 @@ exports.isUser = async (data) => {
     if(isUserInDB === null){
         return {error :"Invalid Token"};
     }else{
-        return{ status : "ok", message:"token validated sucessfully"};
+        return{ status : "ok", message:"token validated sucessfully",userName : data};
+    }
+}
+
+exports.userDetails = async (data) =>{
+    try {
+        const findUser = await newUser.findOne({userName:data}).select('userName profileUrl')
+        if(findUser === null){
+            return {error : "user not found"}
+        }else{
+            return {status: 'ok',data:findUser}
+        }
+    } catch (error) {
+        return {error : error.message}
     }
 }

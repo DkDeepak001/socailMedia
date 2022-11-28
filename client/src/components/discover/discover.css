@@ -1,0 +1,146 @@
+
+.trendingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.frame {
+  min-width: 300px;
+  width: 50%;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 1px 0 10px 1px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 2rem;
+  margin: 3rem;
+}
+.frame header {
+  font-size: 2rem;
+  font-weight: bold;
+  font-family: Glory, sans-serif;
+}
+.score-card {
+  flex: 1;
+  margin: 1rem 0 0 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.score-card .leader {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  min-height: 60px;
+  width: 70%;
+  margin: auto;
+  padding: 0% 3%;
+
+}
+.score-card .leader:not(:first-child) {
+  margin-top: 1rem;
+}
+
+.score-card .leader .user-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 3px 5px;
+  width: 50%;
+}
+.score-card .leader .user-info .user-name {
+  font-weight: bold;
+  text-transform: capitalize;
+}
+.score-card .leader .user-info .number {
+  color: #000000;
+  font-size: 1.3rem;
+  font-weight: 800;
+  padding-right: 5%;
+}
+.score-card .leader-post {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    margin: 0 0 0 5px;
+    width: 50%;
+
+}
+.leader-post button{
+    padding: 3% 10%;
+    margin-left: 10px;
+}
+
+.score-card .leader .gallery .gallery-item:not(:first-child) {
+  margin-left: 5px;
+}
+.score-card a{
+  text-decoration: none;
+  color: #000000;
+}
+.score-card a :hover{
+  background-color: #f2f3f7;
+  border-radius: 20px;
+}
+
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (max-width: 1100px) {
+
+  .frame {
+    width: 70%;
+  }
+}
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (max-width: 992px) {
+
+  .frame {
+    width: 80%;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (max-width: 768px) {
+ 
+  .frame {
+    width: 90%;
+  } 
+  .score-card .leader {
+    width: 90%;
+    padding: 0% 3%;
+}
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (max-width: 600px) {
+ 
+  .frame {
+    width: 90%;
+  } 
+  .score-card .leader {
+    width: 100%;
+    padding: 0% 2%;
+  }
+  .frame header {
+    font-size: 1.5rem;
+  }
+}
+
+  /* Extra small devices (phones, 600px and down) */
+  @media only screen and (max-width: 400px) {
+   
+    .frame {
+      min-width: 90%;
+    } 
+    .score-card .leader {
+      width: 100%;
+      padding: 0%;
+    }
+    .frame header {
+      font-size: 1.5rem;
+    }
+  }
+  
